@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "es2016",
+		"module": "commonjs",
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"esModuleInterop": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"typeRoots": ["./node_modules/@types", "./src/types"],
+		"noUnusedParameters": false
+	},
+	"include": ["src/**/*.ts", "src/bin/www"],
+	"exclude": ["node_modules"]
+  }
+  

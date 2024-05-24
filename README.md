@@ -15,7 +15,7 @@ This server is built with TypeScript and Express, providing a robust and scalabl
 - Development and production scripts
 
 ## Project Structure
-
+```
 express-ts-server/
 ├── node_modules/
 ├── dist/
@@ -32,7 +32,7 @@ express-ts-server/
 ├── tsconfig.json
 ├── package-lock.json
 ├── README.md
-
+```
 
 ## Getting Started
 

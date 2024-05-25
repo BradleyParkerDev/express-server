@@ -102,7 +102,6 @@ express-ts-server/
 - **@types/express**: TypeScript definitions for Express
 - **@types/morgan**: TypeScript definitions for morgan
 - **@types/node**: TypeScript definitions for Node.js
-- **ts-node-dev**: TypeScript execution and auto-restart for Node.js
 - **typescript**: TypeScript language
 
 ## Contributing

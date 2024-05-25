@@ -82,6 +82,7 @@ express-ts-server/
 
 ## Dependencies
 
+- **concurrently**: Run multiple commands concurrently
 - **cookie-parser**: Middleware to parse cookies
 - **cors**: Middleware to enable CORS
 - **debug**: A tiny debugging utility
@@ -90,6 +91,7 @@ express-ts-server/
 - **http-errors**: Create HTTP errors for Express
 - **morgan**: HTTP request logger middleware
 - **nodemon**: Tool to automatically restart the server on file changes
+- **rimraf**: A deep deletion module for node (like rm -rf)
 
 ## Dev Dependencies
 

@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
+import dotenv from 'dotenv';
 import app from '../app';
 import debugModule from 'debug';
 import http from 'http';
+
+dotenv.config(); // Add this line to load environment variables
 
 const debug = debugModule('express-generator-example:server');
 

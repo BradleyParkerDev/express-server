@@ -3,6 +3,6 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req: Request, res: Response) => {
-    res.send('Hello, TypeScript with Express!');
+    res.send('Hello, World! The project rebuilt!');
 });
 export default router;

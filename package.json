@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "build": "rimraf dist && npx tsc", 
+    "build": "rimraf dist && npx tsc",
     "prestart": "npm run build",
     "start": "nodemon dist/bin/www.js",
     "dev": "concurrently \"npx tsc -w\"  \"nodemon dist/bin/www.js\""
@@ -28,7 +28,6 @@
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/debug": "^4.1.12",
-    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.12.12",

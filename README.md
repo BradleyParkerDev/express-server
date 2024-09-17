@@ -101,7 +101,6 @@ express-ts-server/
 - **@types/dotenv**: TypeScript definitions for dotenv
 - **@types/express**: TypeScript definitions for Express
 - **@types/morgan**: TypeScript definitions for morgan
-- **@types/node**: TypeScript definitions for Node.js
 - **typescript**: TypeScript language
 
 ## Contributing

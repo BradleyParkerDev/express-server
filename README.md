@@ -40,7 +40,7 @@ express-ts-server/
 ### Prerequisites
 
 - Node.js (v20.17.0 or higher)
-- npm or yarn
+- npm (10.8.3 or higher)
 
 ### Installation
 

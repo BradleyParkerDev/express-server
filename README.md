@@ -38,7 +38,7 @@ express-ts-server/
 
 ### Prerequisites
 
-- Node.js (version 14 or higher)
+- Node.js (v20.17.0 or higher)
 - npm or yarn
 
 ### Installation

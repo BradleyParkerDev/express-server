@@ -26,12 +26,12 @@ express-ts-server/
 │ ├── routes/               # Directory for route handlers
 │ │ ├── index.ts            # Route handler for the root endpoint
 │ │ └── users.ts            # Route handler for user-related endpoints
-│ ├── types/                # Directory for custom TypeScript type definitions
+│ └── types/                # Directory for custom TypeScript type definitions
 ├── .gitignore              # File to specify which files and directories to ignore in git
 ├── package.json            # Defines project dependencies and npm scripts
 ├── tsconfig.json           # TypeScript configuration file
 ├── package-lock.json       # Locks the versions of installed npm packages
-├── README.md               # Project documentation
+└── README.md               # Project documentation
 
 ```
 
@@ -89,7 +89,7 @@ express-ts-server/
 - **debug**: A tiny debugging utility
 - **dotenv**: Loads environment variables from a `.env` file into `process.env`
 - **express**: Web framework for Node.js
-- **http-errors**: Create HTTP errors for Express
+- **http-errors**: Creates HTTP errors for Express
 - **morgan**: HTTP request logger middleware
 - **nodemon**: Tool to automatically restart the server on file changes
 - **rimraf**: A deep deletion module for node (like rm -rf)

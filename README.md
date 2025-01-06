@@ -1,6 +1,6 @@
 # Express Server
 
-This is a TypeScript-based Express server skeleton that can be used as a starting point for new projects. It includes basic middleware setup, routing, and error handling.
+This is a TypeScript-based Express server skeleton that can be used as a starting point for new projects. It includes a basic middleware setup, routing, and error handling.
 
 ## Overview
 

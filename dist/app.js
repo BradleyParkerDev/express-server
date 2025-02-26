@@ -9,7 +9,9 @@ const cors_1 = __importDefault(require("cors"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const index_1 = __importDefault(require("./routes/index"));
 const user_1 = __importDefault(require("./routes/user"));
+// App creation
 const app = (0, express_1.default)();
+// Middleware
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));

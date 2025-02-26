@@ -6,7 +6,8 @@ import http from 'http';
 import { serverUtil } from '../lib/server';
 import logger from '../lib/logger';
 
-dotenv.config(); // Add this line to load environment variables
+// Load environment variables
+dotenv.config(); 
 
 
 /**

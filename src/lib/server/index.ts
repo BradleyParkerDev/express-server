@@ -1,6 +1,7 @@
 import debugModule from 'debug';
 import { AddressInfo } from 'net';
 import logger from '../logger';
+
 const debug = debugModule('express:server');
 
 
@@ -22,6 +23,7 @@ const normalizePort = (val: string) => {
 
 	return false;
 }
+
 
 /**
  * Event listener for HTTP server "error" event.
@@ -51,6 +53,7 @@ const onError = (error: NodeJS.ErrnoException, port: string | number | false) =>
 			throw error;
 	}
 } 
+
 
 /**
  * Event listener for HTTP server "listening" event.

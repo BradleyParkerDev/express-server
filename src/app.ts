@@ -5,21 +5,27 @@ import createError from 'http-errors';
 import indexRouter from './routes/index';
 import userRouter from './routes/user';
 
+// App creation
 const app = express();
 
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
 // Define routes
 app.use('/', indexRouter);
 app.use('/api/user', userRouter);
+
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
 	next(createError(404));
 });
+
 
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response) => {
@@ -29,5 +35,6 @@ app.use((err: any, req: express.Request, res: express.Response) => {
 		error: req.app.get('env') === 'development' ? err : {}
 	});
 });
+
 
 export default app;

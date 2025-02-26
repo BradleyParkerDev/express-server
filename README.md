@@ -42,8 +42,8 @@ express-server/
 
 ### Prerequisites
 
-- Node.js (v20.17.0 or higher)
-- npm (10.8.3 or higher)
+- Node.js (v22.13.1 or higher)
+- npm (11.1.0 or higher)
 
 ### Installation
 

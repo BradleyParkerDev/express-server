@@ -10,7 +10,10 @@ const app = express();
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3005', // React app's URL
+    credentials: true, // Allow cookies and other credentials
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

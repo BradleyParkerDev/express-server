@@ -1,9 +1,10 @@
+import http from 'http';
 import debugModule from 'debug';
 import { AddressInfo } from 'net';
 import logger from '../logger';
 
 const debug = debugModule('express:server');
-
+let isServerListening = false; // ✅ Tracks state
 
 /**
  * Normalize a port into a number, string, or false.
@@ -59,8 +60,8 @@ const onError = (error: NodeJS.ErrnoException, port: string | number | false) =>
  * Event listener for HTTP server "listening" event.
  */
 const onListening = (addressInfo: string | AddressInfo | null) => {
-	if (addressInfo) {
-        
+	isServerListening = true;
+	if (addressInfo) { 
 		const bind = typeof addressInfo === 'string' 
         ? 'pipe ' + addressInfo 
         : 'port ' + addressInfo.port;
@@ -72,8 +73,59 @@ const onListening = (addressInfo: string | AddressInfo | null) => {
 }
 
 
+/**
+ * Register shutdown handlers for graceful shutdown.
+ */
+const registerShutdownHandlers = (server: http.Server) => {
+	let shuttingDown = false;
+
+	const shutdown = (signal: string) => {
+		if (shuttingDown) return; // 🛡 Already shutting down
+		shuttingDown = true;
+	
+		logger.info(`🛑 Received ${signal}. Shutting down...`);
+	
+		if (isServerListening) {
+			server.close(() => {
+				logger.info('✅ Server closed.');
+				setTimeout(() => {
+					if (signal === 'SIGUSR2') {
+						process.kill(process.pid, 'SIGUSR2');
+					} else {
+						process.exit(0);
+					}
+				}, 100);
+			});
+		} else {
+			logger.warn('⚠️ Server was not listening. Exiting.');
+			setTimeout(() => {
+				if (signal === 'SIGUSR2') {
+					process.kill(process.pid, 'SIGUSR2');
+				} else {
+					process.exit(0);
+				}
+			}, 100);
+		}
+	};
+
+	process.on('SIGINT', () => shutdown('SIGINT'));
+	process.on('SIGTERM', () => shutdown('SIGTERM'));
+	process.once('SIGUSR2', () => shutdown('SIGUSR2'));
+
+	process.on('uncaughtException', (err) => {
+		logger.error(`Uncaught Exception: ${err.message}`, { stack: err.stack });
+		shutdown('uncaughtException');
+	});
+
+	process.on('unhandledRejection', (reason: any) => {
+		logger.error(`Unhandled Rejection: ${reason?.message || reason}`);
+		shutdown('unhandledRejection');
+	});
+};
+
 export const serverUtil = {
     normalizePort,
     onError,
-    onListening   
+    onListening,
+	registerShutdownHandlers   
 }

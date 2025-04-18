@@ -5,6 +5,6 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', (req: Request, res: Response) => {
     res.send('Hello, from the user api!');
-    userLogger.info("Get request made to user api!")
+    userLogger.info("Get request made to the user api!")
 });
 export default router;

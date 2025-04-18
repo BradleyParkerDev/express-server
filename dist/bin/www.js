@@ -12,9 +12,9 @@ const logger_1 = __importDefault(require("../lib/logger"));
 // Load environment variables
 dotenv_1.default.config();
 /**
- * Get port from environment and store in Express.
+ * Get port from environment variables and store in Express.
  */
-const port = server_1.serverUtil.normalizePort(process.env.PORT || '4000');
+const port = server_1.serverUtil.normalizePort(process.env.PORT || '3001');
 app_1.default.set('port', port);
 /**
  * Create HTTP server.
@@ -31,4 +31,5 @@ server.on('listening', () => {
     const addressInfo = server.address();
     server_1.serverUtil.onListening(addressInfo);
     logger_1.default.info(`Server started on port ${port}.`);
+    server_1.serverUtil.registerShutdownHandlers(server); // 🔥 Register graceful shutdown hooks
 });

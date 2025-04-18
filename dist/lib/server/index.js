@@ -7,6 +7,7 @@ exports.serverUtil = void 0;
 const debug_1 = __importDefault(require("debug"));
 const logger_1 = __importDefault(require("../logger"));
 const debug = (0, debug_1.default)('express:server');
+let isServerListening = false; // ✅ Tracks state
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -52,6 +53,7 @@ const onError = (error, port) => {
  * Event listener for HTTP server "listening" event.
  */
 const onListening = (addressInfo) => {
+    isServerListening = true;
     if (addressInfo) {
         const bind = typeof addressInfo === 'string'
             ? 'pipe ' + addressInfo
@@ -62,8 +64,56 @@ const onListening = (addressInfo) => {
         debug(`Listening but no address info available`);
     }
 };
+/**
+ * Register shutdown handlers for graceful shutdown.
+ */
+const registerShutdownHandlers = (server) => {
+    let shuttingDown = false;
+    const shutdown = (signal) => {
+        if (shuttingDown)
+            return; // 🛡 Already shutting down
+        shuttingDown = true;
+        logger_1.default.info(`🛑 Received ${signal}. Shutting down...`);
+        if (isServerListening) {
+            server.close(() => {
+                logger_1.default.info('✅ Server closed.');
+                setTimeout(() => {
+                    if (signal === 'SIGUSR2') {
+                        process.kill(process.pid, 'SIGUSR2');
+                    }
+                    else {
+                        process.exit(0);
+                    }
+                }, 100);
+            });
+        }
+        else {
+            logger_1.default.warn('⚠️ Server was not listening. Exiting.');
+            setTimeout(() => {
+                if (signal === 'SIGUSR2') {
+                    process.kill(process.pid, 'SIGUSR2');
+                }
+                else {
+                    process.exit(0);
+                }
+            }, 100);
+        }
+    };
+    process.on('SIGINT', () => shutdown('SIGINT'));
+    process.on('SIGTERM', () => shutdown('SIGTERM'));
+    process.once('SIGUSR2', () => shutdown('SIGUSR2'));
+    process.on('uncaughtException', (err) => {
+        logger_1.default.error(`Uncaught Exception: ${err.message}`, { stack: err.stack });
+        shutdown('uncaughtException');
+    });
+    process.on('unhandledRejection', (reason) => {
+        logger_1.default.error(`Unhandled Rejection: ${(reason === null || reason === void 0 ? void 0 : reason.message) || reason}`);
+        shutdown('unhandledRejection');
+    });
+};
 exports.serverUtil = {
     normalizePort,
     onError,
-    onListening
+    onListening,
+    registerShutdownHandlers
 };

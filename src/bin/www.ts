@@ -11,9 +11,9 @@ dotenv.config();
 
 
 /**
- * Get port from environment and store in Express.
+ * Get port from environment variables and store in Express.
  */
-const port = serverUtil.normalizePort(process.env.PORT || '4000');
+const port = serverUtil.normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
 
@@ -34,4 +34,5 @@ server.on('listening', () => {
 	const addressInfo = server.address();
 	serverUtil.onListening(addressInfo); 
 	logger.info(`Server started on port ${port}.`)
+	serverUtil.registerShutdownHandlers(server); // 🔥 Register graceful shutdown hooks
 });

@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:3005', // React app's URL
+    origin: 'http://localhost:4001', // React app's URL
     credentials: true, // Allow cookies and other credentials
 }));
 app.use(express.json());

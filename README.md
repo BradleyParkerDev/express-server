@@ -63,7 +63,7 @@ express-server/
 3. **Create a `.env` file in the root directory and add your environment variables. For example:**
 
     ```env
-    PORT=3000
+    PORT=3001
     ```
 
 4. **Build the project:**

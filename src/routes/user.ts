@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
-import { userLogger } from '../lib/logger/index.js';
+import { loggerFactory } from '../lib/logger/index.js';
 const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req: Request, res: Response) => {
 	res.send('Hello, from the user api!');
-	userLogger.info('Get request made to the user api!');
+	loggerFactory.user.info('Get request made to the user api!');
 });
 export default router;

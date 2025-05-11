@@ -33,22 +33,26 @@ const logger = winston.createLogger({
 });
 
 // Function to create a separate logger for a specific route
-const createRouteLogger = (routeName: string) => {
+const createNewLogger = (loggerName: string) => {
 	return winston.createLogger({
 		level: 'info',
 		format: logFormat,
 		transports: [
 			new winston.transports.File({
-				filename: path.join(logDirectory, `${routeName}.log`),
+				filename: path.join(logDirectory, `${loggerName}.log`),
 			}),
 		],
 	});
 };
 
-// Create route-specific loggers
-export const authLogger = createRouteLogger('auth');
-export const userLogger = createRouteLogger('user');
-export const indexLogger = createRouteLogger('index');
+// ✅ Centralized logger registry for domain-specific logging
+export const loggerFactory = {
+	auth: createNewLogger('auth'),       // For authentication routes and services
+	user: createNewLogger('user'),       // For user-related operations
+	index: createNewLogger('index'),     // For root routes or startup events
+	cron: createNewLogger('cronJobs'),  // For background cron job logs
+	// Add more named loggers here as needed
+};
 
 // Export the main server logger
 export default logger;

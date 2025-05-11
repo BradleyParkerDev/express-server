@@ -1,12 +1,19 @@
 {
   "name": "express-server",
   "version": "1.0.0",
+  "type": "module",
   "main": "app.js",
   "scripts": {
-    "build": "rimraf dist && npx tsc",
+    "clean": "rimraf dist logs",
+    "build": "npm run clean && npx tsc",
     "prestart": "npm run build",
     "start": "node dist/bin/www.js",
-    "dev": "concurrently \"npx tsc -w\"  \"nodemon dist/bin/www.js\""
+    "dev": "concurrently \"npx tsc -w\"  \"nodemon dist/bin/www.js\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier . --write",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +37,16 @@
     "@types/debug": "^4.1.12",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.5",
-    "typescript": "^5.7.2"
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-import-resolver-typescript": "^4.3.4",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3",
+    "supertest": "^7.1.0",
+    "typescript": "^5.7.2",
+    "vitest": "^3.1.3"
   }
 }

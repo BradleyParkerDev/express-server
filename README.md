@@ -33,8 +33,8 @@ express-server/
 ├── example.env             # An example of what environment variables to include
 ├── package-lock.json       # Locks the versions of installed npm packages
 ├── package.json            # Defines project dependencies and npm scripts
-├── tsconfig.json           # TypeScript configuration file
-└── README.md               # Project documentation
+├── README.md               # Project documentation
+└── tsconfig.json           # TypeScript configuration file
 
 ```
 
@@ -86,12 +86,12 @@ express-server/
 
 ## Available Scripts
 
-| Script             | Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| `npm run clean`    | Removes the `dist` and `logs` directories using `rimraf`.                  |
-| `npm run build`    | Runs `clean` and then compiles TypeScript source files into `dist`.        |
-| `npm run start`    | Runs the compiled server from `dist/bin/www.js`. Intended for production.  |
-| `npm run dev`      | Runs the TypeScript compiler in watch mode and restarts the server on changes using `concurrently` and `nodemon`. |
+| Script           | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| `npm run clean`  | Removes the `dist` and `logs` directories using `rimraf`.                  |
+| `npm run build`  | Runs `clean` and then compiles TypeScript source files into `dist`.        |
+| `npm run start`  | Runs the compiled server from `dist/bin/www.js`. Intended for production.  |
+| `npm run dev`    | Runs the TypeScript compiler in watch mode and restarts the server on changes using `concurrently` and `nodemon`. |
 
 ## Dependencies
 

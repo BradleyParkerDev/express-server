@@ -1,7 +1,7 @@
 import http from 'http';
 import debugModule from 'debug';
 import { AddressInfo } from 'net';
-import logger from '../logger';
+import logger from '../logger/index.js';
 
 const debug = debugModule('express:server');
 let isServerListening = false; // ✅ Tracks state
@@ -23,20 +23,20 @@ const normalizePort = (val: string) => {
 	}
 
 	return false;
-}
-
+};
 
 /**
  * Event listener for HTTP server "error" event.
  */
-const onError = (error: NodeJS.ErrnoException, port: string | number | false) =>{
+const onError = (
+	error: NodeJS.ErrnoException,
+	port: string | number | false,
+) => {
 	if (error.syscall !== 'listen') {
 		throw error;
 	}
 
-	const bind = typeof port === 'string'
-		? 'Pipe ' + port
-		: 'Port ' + port;
+	const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
 	// handle specific listen errors with friendly messages
 	switch (error.code) {
@@ -53,25 +53,24 @@ const onError = (error: NodeJS.ErrnoException, port: string | number | false) =>
 		default:
 			throw error;
 	}
-} 
-
+};
 
 /**
  * Event listener for HTTP server "listening" event.
  */
 const onListening = (addressInfo: string | AddressInfo | null) => {
 	isServerListening = true;
-	if (addressInfo) { 
-		const bind = typeof addressInfo === 'string' 
-        ? 'pipe ' + addressInfo 
-        : 'port ' + addressInfo.port;
+	if (addressInfo) {
+		const bind =
+			typeof addressInfo === 'string'
+				? 'pipe ' + addressInfo
+				: 'port ' + addressInfo.port;
 
 		debug(`Listening on ${bind}`);
 	} else {
 		debug(`Listening but no address info available`);
 	}
-}
-
+};
 
 /**
  * Register shutdown handlers for graceful shutdown.
@@ -82,9 +81,9 @@ const registerShutdownHandlers = (server: http.Server) => {
 	const shutdown = (signal: string) => {
 		if (shuttingDown) return; // 🛡 Already shutting down
 		shuttingDown = true;
-	
+
 		logger.info(`🛑 Received ${signal}. Shutting down...`);
-	
+
 		if (isServerListening) {
 			server.close(() => {
 				logger.info('✅ Server closed.');
@@ -113,19 +112,29 @@ const registerShutdownHandlers = (server: http.Server) => {
 	process.once('SIGUSR2', () => shutdown('SIGUSR2'));
 
 	process.on('uncaughtException', (err) => {
-		logger.error(`Uncaught Exception: ${err.message}`, { stack: err.stack });
+		logger.error(`Uncaught Exception: ${err.message}`, {
+			stack: err.stack,
+		});
 		shutdown('uncaughtException');
 	});
 
-	process.on('unhandledRejection', (reason: any) => {
-		logger.error(`Unhandled Rejection: ${reason?.message || reason}`);
+	process.on('unhandledRejection', (reason: unknown) => {
+		let message: string;
+
+		if (reason instanceof Error) {
+			message = reason.message;
+		} else {
+			message = String(reason);
+		}
+
+		logger.error(`Unhandled Rejection: ${message}`);
 		shutdown('unhandledRejection');
 	});
 };
 
 export const serverUtil = {
-    normalizePort,
-    onError,
-    onListening,
-	registerShutdownHandlers   
-}
+	normalizePort,
+	onError,
+	onListening,
+	registerShutdownHandlers,
+};

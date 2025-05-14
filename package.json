@@ -1,9 +1,11 @@
 {
   "name": "express-server",
   "version": "1.0.0",
+  "type": "module",
   "main": "app.js",
   "scripts": {
-    "build": "rimraf dist && npx tsc",
+    "clean": "rimraf dist logs",
+    "build": "npm run clean && npx tsc",
     "prestart": "npm run build",
     "start": "node dist/bin/www.js",
     "dev": "concurrently \"npx tsc -w\"  \"nodemon dist/bin/www.js\""

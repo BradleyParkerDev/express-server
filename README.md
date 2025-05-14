@@ -89,6 +89,20 @@ express-server/
     npm start
     ```
 
+## Available Scripts
+
+| Script             | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| `npm run clean`    | Removes the `dist` and `logs` directories using `rimraf`.                  |
+| `npm run build`    | Runs `clean` and then compiles TypeScript source files into `dist`.        |
+| `npm run start`    | Runs the compiled server from `dist/bin/www.js`. Intended for production.  |
+| `npm run dev`      | Runs the TypeScript compiler in watch mode and restarts the server on changes using `concurrently` and `nodemon`. |
+| `npm run lint`     | Lints all `.ts` and `.tsx` files in the `src/` directory using ESLint.     |
+| `npm run lint:fix` | Runs the linter and automatically fixes fixable issues.                    |
+| `npm run test`     | Runs all unit tests once using Vitest.                                     |
+| `npm run test:watch` | Runs Vitest in watch mode, re-running tests on file changes.             |
+| `npm run format`   | Formats the entire codebase using Prettier.                                |
+
 ## Dependencies
 
 - **concurrently**: Run multiple commands concurrently (e.g., `tsc -w` and `nodemon`)

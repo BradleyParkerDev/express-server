@@ -4,7 +4,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "clean": "rimraf dist logs docs",
+    "clean": "rimraf dist logs",
     "build": "npm run clean && npx tsc",
     "prestart": "npm run build",
     "start": "node dist/bin/www.js",

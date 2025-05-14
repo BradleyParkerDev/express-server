@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import dotenv from 'dotenv';
 import app from '../app.js';
 import http from 'http';

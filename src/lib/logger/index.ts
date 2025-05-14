@@ -47,10 +47,10 @@ const createNewLogger = (loggerName: string) => {
 
 // ✅ Centralized logger registry for domain-specific logging
 export const loggerFactory = {
-	auth: createNewLogger('auth'),       // For authentication routes and services
-	user: createNewLogger('user'),       // For user-related operations
-	index: createNewLogger('index'),     // For root routes or startup events
-	cron: createNewLogger('cronJobs'),  // For background cron job logs
+	auth: createNewLogger('auth'), // For authentication routes and services
+	user: createNewLogger('user'), // For user-related operations
+	index: createNewLogger('index'), // For root routes or startup events
+	cron: createNewLogger('cronJobs'), // For background cron job logs
 	// Add more named loggers here as needed
 };
 

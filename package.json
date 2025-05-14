@@ -4,11 +4,11 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "clean": "rimraf dist logs",
+    "clean": "rimraf dist logs docs",
     "build": "npm run clean && npx tsc",
     "prestart": "npm run build",
     "start": "node dist/bin/www.js",
-    "dev": "concurrently \"npx tsc -w\"  \"nodemon dist/bin/www.js\"",
+    "dev": "concurrently \"npx tsc -w\" \"nodemon dist/bin/www.js\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier . --write",

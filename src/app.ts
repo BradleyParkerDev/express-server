@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import { HttpError } from 'http-errors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -5,6 +6,9 @@ import cors from 'cors';
 import createError from 'http-errors';
 import indexRouter from './routes/index.js';
 import userRouter from './routes/user.js';
+
+// Load environment variables
+dotenv.config();
 
 // App creation
 const app = express();

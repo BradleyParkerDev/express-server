@@ -1,18 +1,20 @@
 # Express Server
 
-This is a TypeScript-based Express server skeleton that can be used as a starting point for new projects. It includes a basic middleware setup, routing, and error handling.
+This is a TypeScript-based Express server skeleton that can be used as a starting point for new projects. It includes a basic middleware setup, routing, linting, testing, and error handling.
 
 ## Overview
 
-This server is built with TypeScript and Express, providing a robust and scalable structure for building RESTful APIs. It includes essential middleware for parsing cookies, handling CORS, logging HTTP requests, and managing errors. The server also supports environment variable configuration using `dotenv`.
+This server is built with TypeScript and Express, providing a robust and scalable structure for building RESTful APIs. It includes essential middleware for parsing cookies, handling CORS, logging HTTP requests, and managing errors. The project is configured with ESLint and Prettier for consistent code quality and formatting, and Vitest for unit testing.
 
 ## Features
 
-- TypeScript for type safety and better development experience
-- Basic middleware setup (cookie parser, CORS, logging)
+- TypeScript for type safety and enhanced developer experience
+- Basic middleware setup (cookie parser, CORS, structured logging with Winston)
 - Environment variable configuration with `dotenv`
-- Error handling
-- Development and production scripts
+- Error handling and graceful shutdown support
+- **Linting** with ESLint and Prettier
+- **Testing** with Vitest and Supertest
+- Development and production scripts for streamlined workflow
 
 ## Project Structure
 ```
@@ -89,26 +91,35 @@ express-server/
 
 ## Dependencies
 
-- **concurrently**: Run multiple commands concurrently
-- **cookie-parser**: Middleware to parse cookies
-- **cors**: Middleware to enable CORS
+- **concurrently**: Run multiple commands concurrently (e.g., `tsc -w` and `nodemon`)
+- **cookie-parser**: Middleware for parsing cookies in Express
+- **cors**: Middleware to enable Cross-Origin Resource Sharing
 - **debug**: A tiny debugging utility
 - **dotenv**: Loads environment variables from a `.env` file into `process.env`
-- **express**: Web framework for Node.js
-- **http-errors**: Creates HTTP errors for Express
-- **winston**: Logging library for structured application logging
-- **nodemon**: Tool to automatically restart the server on file changes
-- **rimraf**: A deep deletion module for node (like rm -rf)
+- **express**: Fast, unopinionated, minimalist web framework for Node.js
+- **http-errors**: Create HTTP errors with expressive messages for Express
+- **nodemon**: Automatically restarts the server on file changes (used in development)
+- **rimraf**: A deep deletion module for node (like `rm -rf`)
+- **winston**: Versatile logging library for structured logging in applications
 
 ## Dev Dependencies
 
-- **@types/cookie-parser**: TypeScript definitions for cookie-parser
-- **@types/cors**: TypeScript definitions for cors
-- **@types/debug**: TypeScript definitions for debug
-- **@types/dotenv**: TypeScript definitions for dotenv
-- **@types/express**: TypeScript definitions for Express
-- **@types/node**: TypeScript definitions for Node.js
-- **typescript**: TypeScript language
+- **@types/cookie-parser**: TypeScript definitions for `cookie-parser`
+- **@types/cors**: TypeScript definitions for `cors`
+- **@types/debug**: TypeScript definitions for `debug`
+- **@types/express**: TypeScript definitions for `express`
+- **@types/node**: TypeScript definitions for Node.js built-ins
+- **@typescript-eslint/eslint-plugin**: ESLint rules for TypeScript code
+- **@typescript-eslint/parser**: Parser that allows ESLint to lint TypeScript code
+- **eslint**: Linting utility for JavaScript and TypeScript
+- **eslint-config-prettier**: Disables ESLint rules that conflict with Prettier
+- **eslint-import-resolver-typescript**: Resolves TypeScript paths for import linting
+- **eslint-plugin-import**: ESLint rules for import/export syntax
+- **eslint-plugin-prettier**: Runs Prettier as an ESLint rule
+- **prettier**: Code formatter for consistent style
+- **supertest**: HTTP assertions and testing utility for Express endpoints
+- **typescript**: TypeScript language and compiler
+- **vitest**: Blazing fast unit testing framework (used for testing your code)
 
 ## Contributing
 

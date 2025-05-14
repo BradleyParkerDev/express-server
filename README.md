@@ -92,7 +92,7 @@ express-server/
 ## Available Scripts
 
 | Script             | Description                                                                 |
-|------------------------|-----------------------------------------------------------------------------|
+|--------------------|-----------------------------------------------------------------------------|
 | `npm run clean`    | Removes the `dist` and `logs` directories using `rimraf`.                  |
 | `npm run build`    | Runs `clean` and then compiles TypeScript source files into `dist`.        |
 | `npm run start`    | Runs the compiled server from `dist/bin/www.js`. Intended for production.  |

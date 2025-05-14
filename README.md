@@ -36,9 +36,9 @@ express-server/
 ├── eslint.config.mjs       # ESLint configuration (ES module format)
 ├── examlple.env            # Example `.env` file (typo: should be `example.env`)
 ├── package.json            # Project metadata, scripts, dependencies
-├── tsconfig.json           # TypeScript compiler configuration
-└── README.md               # Project documentation
-
+├── package-lock.json       # Exact versions of installed npm packages
+├── README.md               # Project documentation
+└── tsconfig.json           # TypeScript compiler configuration
 ```
 
 ## Getting Started

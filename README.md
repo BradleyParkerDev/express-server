@@ -104,7 +104,6 @@ express-server/
 - **http-errors**: Creates HTTP errors for Express
 - **winston**: Logging library for structured application logging
 - **nodemon**: Tool to automatically restart the server on file changes
-- **rimraf**: A deep deletion module for node (like rm -rf)
 
 ## Dev Dependencies
 
@@ -114,6 +113,7 @@ express-server/
 - **@types/dotenv**: TypeScript definitions for dotenv
 - **@types/express**: TypeScript definitions for Express
 - **@types/node**: TypeScript definitions for Node.js
+- **rimraf**: A deep deletion module for node (like rm -rf)
 - **typescript**: TypeScript language
 
 ## Contributing

@@ -113,7 +113,6 @@ express-server/
 - **express**: Fast, unopinionated, minimalist web framework for Node.js
 - **http-errors**: Create HTTP errors with expressive messages for Express
 - **nodemon**: Automatically restarts the server on file changes (used in development)
-- **rimraf**: A deep deletion module for node (like `rm -rf`)
 - **winston**: Versatile logging library for structured logging in applications
 
 ## Dev Dependencies
@@ -131,6 +130,7 @@ express-server/
 - **eslint-plugin-import**: ESLint rules for import/export syntax
 - **eslint-plugin-prettier**: Runs Prettier as an ESLint rule
 - **prettier**: Code formatter for consistent style
+- **rimraf**: A deep deletion module for node (like `rm -rf`)
 - **supertest**: HTTP assertions and testing utility for Express endpoints
 - **typescript**: TypeScript language and compiler
 - **vitest**: Blazing fast unit testing framework (used for testing your code)

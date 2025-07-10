@@ -6,7 +6,7 @@ import importPlugin from 'eslint-plugin-import';
 export default [
   {
     files: ['src/**/*.{ts,tsx}'],
-    ignores: ['dist', 'node_modules', 'logs'],
+    ignores: ['server/dist', 'node_modules', 'logs'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

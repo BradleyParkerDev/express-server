@@ -4,16 +4,17 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "clean": "rimraf dist logs",
+    "clean": "rimraf server/dist logs docs",
     "build": "npm run clean && npx tsc",
     "prestart": "npm run build",
-    "start": "node dist/bin/www.js",
-    "dev": "concurrently \"npx tsc -w\" \"nodemon dist/bin/www.js\"",
+    "start": "node -r tsconfig-paths/register server/dist/src/bin/www.js", 
+    "dev": "concurrently \"npx tsc -w\" \"nodemon -r tsconfig-paths/register server/dist/src/bin/www.js\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier . --write",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "docs": "typedoc"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,8 @@
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "supertest": "^7.1.0",
+    "tsconfig-paths": "^4.2.0",
+    "typedoc": "^0.28.7",
     "typescript": "^5.7.2",
     "vitest": "^3.1.3"
   }
